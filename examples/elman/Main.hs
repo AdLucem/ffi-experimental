@@ -77,19 +77,19 @@ main = do
 
     -- randomly initialize a gate
     rnnLayer <- sample $ ElmanSpec { in_features = num_features, hidden_features = num_features }
---    lstmLayer <- sample $ LSTMSpec num_features num_features
---    gruLayer <- sample $ GRUSpec num_features num_features
+    lstmLayer <- sample $ LSTMSpec num_features num_features
+    gruLayer <- sample $ GRUSpec num_features num_features
 
     putStrLn "\nElman Cell Training Loop"
     -- training loop for elman cell
     foldLoop rnnLayer num_iters (run input_tensor init_hidden expected_output)
 
-{-    putStrLn "\nLSTM Training Loop"
+    putStrLn "\nLSTM Training Loop"
     -- training loop for LSTM cell
     foldLoop lstmLayer num_iters (run input_tensor init_hidden expected_output)
 
     putStrLn "\nGRU Training Loop"
     -- training loop for GRU cell
     foldLoop gruLayer num_iters (run input_tensor init_hidden expected_output)
--}
+
     return ()
