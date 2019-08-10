@@ -54,20 +54,10 @@ run input_tensor init_hidden expected_output model i = do
     return $ replaceParameters model new_flat_parameters
 
 
--- | convert a list to a tensor
-fromList :: [Float] -> Tensor
-fromList ls = asTensor ls
-
-representation :: Char -> Tensor
-representation c = case c of
-    'h' -> fromList [1, 0, 0, 0]
-    'e' -> fromList [0, 1, 0, 0]
-    'l' -> fromList [0, 0, 1, 0]
-    'o' -> fromList [0, 0, 0, 1]
-
 main :: IO ()
 main = do
 
+--    let input_tensor = fromNestedList $ map representation "hello"
     let foldLoop x count block = foldM block x [1..count]
 
     -- randomly initializing training values
